@@ -1,0 +1,11 @@
+/* 
+  languajes.strings
+  kc-Madrid-shops
+
+  Created by JOSE LUIS BUSTOS ESTEBAN on 22/9/17.
+  Copyright © 2017 jose luis Bustos. All rights reserved.
+*/
+GLOBAL_LOAD_DATA = "Loading data ...";
+MENU_MADRID_SHOPS_TITLE = "Shops in Madrid" ;
+MENU_MADRID_EVENTS_TITLE = "Events in Madrid" ;
+MENU_MAIN_TITLE = "Menu";
