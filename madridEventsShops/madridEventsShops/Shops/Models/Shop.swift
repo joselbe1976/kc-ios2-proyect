@@ -21,6 +21,7 @@ public class Shop {
     //Cache Logo and Image
     var logo_data : NSData?
     var image_data : NSData?
+    var googleMaps_data : NSData?
     
     public init(name: String) {
         self.name = name

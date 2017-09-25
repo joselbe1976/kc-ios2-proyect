@@ -23,6 +23,7 @@ func mapShopCDIntoShop(shopCD: ShopCD) -> Shop {
     //Cache logo and Image
     shop.logo_data = shopCD.logo_data
     shop.image_data = shopCD.image_data
+    shop.googleMaps_data = shopCD.googlemaps_data
     
     return shop
 }
@@ -43,6 +44,7 @@ func mapShopIntoShopCD(context: NSManagedObjectContext, shop: Shop) -> ShopCD {
     //Cache Logo and Image
     shopCD.logo_data = shop.logo_data
     shopCD.image_data = shop.image_data
+    shopCD.googlemaps_data = shop.googleMaps_data
     
     return shopCD
 }

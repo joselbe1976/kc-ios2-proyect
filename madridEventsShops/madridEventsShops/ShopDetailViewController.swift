@@ -46,16 +46,17 @@ class ShopDetailViewController: UIViewController {
         self.textDescription.text = shop?.description
         
         //image and Cache Control
-        if let imagen = shop?.image_data{
+        if let imagen = shop?.googleMaps_data{
             
             //esta cacheado, lo meto en la imagen
             image.image = UIImage(data: imagen as Data)
         }
-        else{
+        /*else{
             //No esta, cargamos y cacheado
             
             shop?.image.loadImageAndCacheShop(into: image, context: self.context!, shop: self.shop!, typeImage: "image") //image cache
         }
+ */
         
     }
 

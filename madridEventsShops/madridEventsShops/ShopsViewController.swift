@@ -47,7 +47,7 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+       SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
 
         
         // REGISTER SHOPCELL
@@ -61,7 +61,6 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.delegate = self
-        self.map.delegate = self
         locationManager?.startUpdatingLocation()
         
         
@@ -74,20 +73,20 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         let reg = self.map.regionThatFits(region)
         self.map.setRegion(reg, animated: true)
         
-        
+        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
         
         //Load Data from Json If is not store
         ExecuteOnceInteractorImpl().execute {
-            SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
+            
             initializeData()
             
         }
         
         self.shopsCollectionView.delegate = self
         self.shopsCollectionView.dataSource = self
-        self.FillMapPoints() //relleno de points in MapKit
-        
-        
+
+        self.FillMapPoints()
+      //  self.CacheAllData() //quitar
         
     }
     
@@ -96,10 +95,12 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     func initializeData() {
         let downloadShopsInteractor: DownloadAllShopsInteractor = DownloadAllShopsInteractorNSURLSessionImpl()
         
+        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
+        
         downloadShopsInteractor.execute { (shops: Shops) in
             // todo OK
             
-            SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
+            
             
             let cacheInteractor = SaveAllShopsInteractorImpl()
             cacheInteractor.execute(shops: shops, context: self.context, onSuccess: { (shops: Shops) in
@@ -112,10 +113,8 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
                
                 //cache all images
                 self.CacheAllData()
-               
-                 self.FillMapPoints() //relleno de points in MapKit
+
                 
-                SVProgressHUD.dismiss()
             })
         }
     }
@@ -168,8 +167,7 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         print("** MAP FINISH LOADING")
-        SVProgressHUD.dismiss()
-    }
+           }
     
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
         print("** START LOCATING USER")
@@ -246,6 +244,12 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             self.map.addAnnotation(n)
 
         }
+        //piut the delegate
+        self.map.delegate = self
+        
+        if shopsCd.count > 0 {
+            SVProgressHUD.dismiss()
+        }
       }
   
     //Cachhe All Images
@@ -267,8 +271,18 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             shopCD.image?.loadImageAndCacheShop(into: iv, context: self.context, shop: mapShopCDIntoShop(shopCD: shopCD), typeImage: "image")
             
             
+            //location GoogleMaps Image
+            let googleURL : String = "https://maps.googleapis.com/maps/api/staticmap?center=XXX,YYY&zoom=17&size=320x220&scale=2&markers=%7Ccolor:0x9C7B14%7CXXX,YYY"
+            
+            let urlStringFinal = googleURL.replacingOccurrences(of: "YYY", with: String(describing: shopCD.logitude)).replacingOccurrences(of: "XXX", with: String(describing: shopCD.latitude)).replacingOccurrences(of: ",0.0", with: "")
+            
+             urlStringFinal.loadImageAndCacheShop(into: iv, context: self.context, shop: mapShopCDIntoShop(shopCD: shopCD), typeImage: "google")
+            
         }
-
+        
+        //fill maps points
+        self.FillMapPoints()
+        
         
     }
     

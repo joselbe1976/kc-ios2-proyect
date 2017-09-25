@@ -56,9 +56,17 @@ extension String {
                         let shopCD = (results as! [ShopCD])[0]
                         
                         if typeImage == "logo"{
+                            print("es cache de Logo")
                             shopCD.logo_data = data
                         }
-                        else {
+                        else if typeImage == "google" {
+                            print("es cache de Google")
+                            shopCD.googlemaps_data = data
+                            
+                        
+                        }
+                        else{
+                            print("es cache de imagen")
                             shopCD.image_data = data
                         }
                         try context.save()
