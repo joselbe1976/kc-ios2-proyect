@@ -6,9 +6,9 @@
     </entity>
     <entity name="ShopCD" representedClassName="ShopCD" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="description_en" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="description_es" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_data" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="logitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,7 +17,7 @@
         <attribute name="openingHours" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ShopCD" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="CacheCD" positionX="-63" positionY="54" width="128" height="75"/>
+        <element name="ShopCD" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

@@ -18,8 +18,9 @@ public class Shop {
     var openingHours : String   = ""
     var address      : String   = ""
     
-    //Cache Logo
+    //Cache Logo and Image
     var logo_data : NSData?
+    var image_data : NSData?
     
     public init(name: String) {
         self.name = name

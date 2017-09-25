@@ -31,56 +31,50 @@ extension String {
         }
     }
     
-    func loadImageAndCache (into imageView: UIImageView, context : NSManagedObjectContext, shop : Shop) {
+    func loadImageAndCacheShop (into imageView: UIImageView, context : NSManagedObjectContext, shop : Shop, typeImage : String = "logo") {
        
         let queue = OperationQueue()
         queue.addOperation {
             if let url = URL(string: self),
                 let data = NSData (contentsOf: url),
-                let image = UIImage (data: data as Data) {
+                let logo = UIImage (data: data as Data) {
                 
-                // Se devuelve el control a la linea principal
+                // Main Thread control
                 OperationQueue.main.addOperation {
-                    imageView.image = image
+                    imageView.image = logo
                     
                     
                     //Cache With CoreData. Add The cache. Was verificated when componen the cell
-                    
-                   let shopCD = mapShopIntoShopCD(context: context, shop: shop)
-                   shopCD.logo_data = data
-                    
-                    
-                 /*   var fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShopCD")
-                    fetchRequest.predicate = NSPredicate(format: "name = %@", shop.name)
-                    
-                    
-                   
-                    
-                    if let fetchResults = context.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
-                        if fetchResults.count != 0{
-                            
-                            var managedObject = fetchResults[0]
-                            managedObject.setValue(data, forKey: "logo_data")
-                            
-                            do {
-                                try context.save()
-                            } catch {
-                                let nserror = error as NSError
-                                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                            }
 
+                    
+                    let predicate = NSPredicate(format: "name = %@", shop.name)
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShopCD")
+                    fetchRequest.predicate = predicate
+ 
+                    do {
+                        let results = try context.fetch(fetchRequest)
+                        let shopCD = (results as! [ShopCD])[0]
+                        
+                        if typeImage == "logo"{
+                            shopCD.logo_data = data
                         }
+                        else {
+                            shopCD.image_data = data
+                        }
+                        try context.save()
+                        
+                        
+                    } catch  {
+                        
                     }
- */
-                    
-                    
-                    
+
                     
                 }
-            }
+                }
         }
     }
-
+    
+   
 }
 
 
@@ -113,3 +107,20 @@ extension UIImage{
     }
 
 }
+
+
+
+
+//to convert String To Float
+extension String {
+    func floatValue() -> Float? {
+        if let floatval = Float(self) {
+            return floatval
+        }
+        return nil
+    }
+}
+
+
+
+

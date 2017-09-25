@@ -10,16 +10,23 @@ import UIKit
 import CoreData
 import CoreLocation
 import MapKit
+import SVProgressHUD
+
 
 class Note: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
+    var name : String?
+
     
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
+    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, name: String) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
+        self.name = name
+   
+
     }
 }
 
@@ -40,6 +47,9 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+
+        
         // REGISTER SHOPCELL
 
         //registramos la celda
@@ -55,27 +65,28 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         locationManager?.startUpdatingLocation()
         
         
-        let londonLocation = CLLocation(latitude: 40.5073509, longitude: 0.1277583)
-        self.map.setCenter(londonLocation.coordinate, animated: true)
+        //configure the MapKit
+        let madridLocation = CLLocation(latitude: 40.416775, longitude: -3.703790)
+        self.map.setCenter(madridLocation.coordinate, animated: true)
         
-        let region = MKCoordinateRegion(center: londonLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let region = MKCoordinateRegion(center: madridLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         
         let reg = self.map.regionThatFits(region)
         self.map.setRegion(reg, animated: true)
         
         
-        let n=Note(coordinate: londonLocation.coordinate, title: "Hello", subtitle: "Hello sub")
-        self.map.addAnnotation(n)
-
-        
         
         //Load Data from Json If is not store
         ExecuteOnceInteractorImpl().execute {
+            SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
             initializeData()
+            
         }
         
         self.shopsCollectionView.delegate = self
         self.shopsCollectionView.dataSource = self
+        self.FillMapPoints() //relleno de points in MapKit
+        
         
         
     }
@@ -88,6 +99,8 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         downloadShopsInteractor.execute { (shops: Shops) in
             // todo OK
             
+            SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
+            
             let cacheInteractor = SaveAllShopsInteractorImpl()
             cacheInteractor.execute(shops: shops, context: self.context, onSuccess: { (shops: Shops) in
                 SetExecutedOnceInteractorImpl().execute()
@@ -96,30 +109,18 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
                 self.shopsCollectionView.delegate = self
                 self.shopsCollectionView.dataSource = self
                 self.shopsCollectionView.reloadData()
+               
+                //cache all images
+                self.CacheAllData()
+               
+                 self.FillMapPoints() //relleno de points in MapKit
+                
+                SVProgressHUD.dismiss()
             })
         }
     }
    
     
-    //  Select a Shop
-    
-    /*
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let shop: ShopCD = self.fetchedResultsController.object(at: indexPath)
-        self.performSegue(withIdentifier: "ShowShopDetailSegue", sender: shop)
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowShopDetailSegue" {
-            let vc = segue.destination as! ShopDetailViewController
-            
-            let shopCD: ShopCD = sender as! ShopCD
-            vc.shop = mapShopCDIntoShop(shopCD: shopCD)
-        }
-    }
- */
     
     // MARK: - Fetched results controller
     var _fetchedResultsController: NSFetchedResultsController<ShopCD>? = nil
@@ -162,14 +163,19 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
         print("*** MAP STARTING")
+
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         print("** MAP FINISH LOADING")
+        SVProgressHUD.dismiss()
     }
     
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
         print("** START LOCATING USER")
+        
+ 
+        
     }
     
     func mapViewDidStopLocatingUser(_ mapView: MKMapView) {
@@ -189,6 +195,83 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         print("deselect")
     }
 
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+     //   guard let annotation = annotation as? ShopAnnotation else { return nil }
+        
+        let identifier = "marker"
+        var view: MKPinAnnotationView
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            
+            
+            
+            //sacamos el logo de CoreData
+            
+            let tools = coreDataTools()
+            let shopCD = tools.getShopsFilterName(context: self.context, name: annotation.title as! String)
+            
+            
+            if let logoData = shopCD.logo_data{
+                let mapsButtom = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+                mapsButtom.setBackgroundImage(UIImage(data: logoData as Data), for: UIControlState())
+                view.rightCalloutAccessoryView = mapsButtom
+            } else {
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }
+        }
+        return view
+    }
+    
+    
+    // Fill All point in the map from CoreData
+    
+    func FillMapPoints(){
+        
+        //leemos todas las tiendas
+        let obj = coreDataTools()
+        let shopsCd : [ShopCD] = obj.getAllShops(context: self.context)
+        
+        //all items
+        for shopCD in shopsCd {
+            let location = CLLocation(latitude: CLLocationDegrees(shopCD.latitude), longitude: CLLocationDegrees(shopCD.logitude))
+            
+            let n=Note(coordinate: location.coordinate, title: shopCD.name!, subtitle: shopCD.address!, name: shopCD.name!)
+            self.map.addAnnotation(n)
+
+        }
+      }
+  
+    //Cachhe All Images
+    func CacheAllData(){
+        
+        //leemos todas las tiendas
+        let obj = coreDataTools()
+        let shopsCd : [ShopCD] = obj.getAllShops(context: self.context)
+        
+        //all items
+        for shopCD in shopsCd {
+           
+            let iv = UIImageView()
+            
+            //logos
+            shopCD.logo?.loadImageAndCacheShop(into: iv, context: self.context, shop: mapShopCDIntoShop(shopCD: shopCD))
+            
+            //images
+            shopCD.image?.loadImageAndCacheShop(into: iv, context: self.context, shop: mapShopCDIntoShop(shopCD: shopCD), typeImage: "image")
+            
+            
+        }
+
+        
+    }
+    
 
 
     }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C3D659A577143467DDC94A1A /* Pods_madridEventsShops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79BD0DE7F7E1A02121DD4A5 /* Pods_madridEventsShops.framework */; };
 		D8B58C151F783B820003B116 /* ShopsViewController+CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B58C141F783B820003B116 /* ShopsViewController+CollectionViewController.swift */; };
+		D8C394811F7986C50062986B /* CoreDataTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C394801F7986C50062986B /* CoreDataTools.swift */; };
+		D8C394841F7991450062986B /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C394821F7991450062986B /* ShopDetailViewController.swift */; };
+		D8C394851F7991450062986B /* ShopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8C394831F7991450062986B /* ShopDetailViewController.xib */; };
 		D8C51FB41F7846E900B89B7D /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C51FB21F7846E900B89B7D /* ShopCell.swift */; };
 		D8C51FB51F7846E900B89B7D /* ShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8C51FB31F7846E900B89B7D /* ShopCell.xib */; };
 		D8EEB7DD1F78294F008C49F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EEB7DC1F78294F008C49F6 /* AppDelegate.swift */; };
@@ -63,6 +66,9 @@
 		37E370E772E7B372EAC2F5B7 /* Pods-madridEventsShops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-madridEventsShops.release.xcconfig"; path = "Pods/Target Support Files/Pods-madridEventsShops/Pods-madridEventsShops.release.xcconfig"; sourceTree = "<group>"; };
 		7CD3DBC8923203DE407651B5 /* Pods-madridEventsShops.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-madridEventsShops.debug.xcconfig"; path = "Pods/Target Support Files/Pods-madridEventsShops/Pods-madridEventsShops.debug.xcconfig"; sourceTree = "<group>"; };
 		D8B58C141F783B820003B116 /* ShopsViewController+CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShopsViewController+CollectionViewController.swift"; sourceTree = "<group>"; };
+		D8C394801F7986C50062986B /* CoreDataTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTools.swift; sourceTree = "<group>"; };
+		D8C394821F7991450062986B /* ShopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
+		D8C394831F7991450062986B /* ShopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopDetailViewController.xib; sourceTree = "<group>"; };
 		D8C51FB21F7846E900B89B7D /* ShopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
 		D8C51FB31F7846E900B89B7D /* ShopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopCell.xib; sourceTree = "<group>"; };
 		D8EEB7D91F78294F008C49F6 /* madridEventsShops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = madridEventsShops.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +206,7 @@
 			children = (
 				D8EEB7E31F78294F008C49F6 /* madridEventsShops.xcdatamodeld */,
 				D8EEB8061F7829FD008C49F6 /* CoreDataStack.swift */,
+				D8C394801F7986C50062986B /* CoreDataTools.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -305,6 +312,8 @@
 				D8EEB82A1F782C4C008C49F6 /* ShopsViewController.xib */,
 				D8C51FB21F7846E900B89B7D /* ShopCell.swift */,
 				D8C51FB31F7846E900B89B7D /* ShopCell.xib */,
+				D8C394821F7991450062986B /* ShopDetailViewController.swift */,
+				D8C394831F7991450062986B /* ShopDetailViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -444,6 +453,7 @@
 				D8EEB7E71F78294F008C49F6 /* Assets.xcassets in Resources */,
 				D8EEB8301F782C64008C49F6 /* EventsViewController.xib in Resources */,
 				D8EEB8361F782E54008C49F6 /* event.png in Resources */,
+				D8C394851F7991450062986B /* ShopDetailViewController.xib in Resources */,
 				D8EEB8381F783083008C49F6 /* madrid.jpg in Resources */,
 				D8EEB8341F782E4B008C49F6 /* shop.png in Resources */,
 			);
@@ -525,6 +535,7 @@
 				D8EEB8541F783509008C49F6 /* JSONParser.swift in Sources */,
 				D8EEB81C1F782A2E008C49F6 /* MenuTableViewController.swift in Sources */,
 				D8EEB8511F783509008C49F6 /* DownloadAllShopsInteractorNSURLSessionImpl.swift in Sources */,
+				D8C394811F7986C50062986B /* CoreDataTools.swift in Sources */,
 				D8EEB8561F783509008C49F6 /* SetExecutedOnceInteractorImpl.swift in Sources */,
 				D8EEB8571F783509008C49F6 /* Typealias.swift in Sources */,
 				D8EEB81F1F782A2E008C49F6 /* menuModels.swift in Sources */,
@@ -541,6 +552,7 @@
 				D8EEB8551F783509008C49F6 /* SetExecutedOnceInteractor.swift in Sources */,
 				D8EEB8531F783509008C49F6 /* ExecuteOnceInteractorImpl.swift in Sources */,
 				D8EEB8031F7829E3008C49F6 /* Shop.swift in Sources */,
+				D8C394841F7991450062986B /* ShopDetailViewController.swift in Sources */,
 				D8EEB8501F783509008C49F6 /* DownloadAllShopsInteractorNSOpImpl.swift in Sources */,
 				D8EEB84F1F783509008C49F6 /* DownloadAllShopsInteractorFakeImpl.swift in Sources */,
 			);

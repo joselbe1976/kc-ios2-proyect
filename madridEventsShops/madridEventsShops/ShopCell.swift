@@ -45,7 +45,7 @@ class ShopCell: UITableViewCell {
         else{
             //No esta, cargamos y cacheado
             
-            self.shop?.logo.loadImageAndCache(into: image2, context: context, shop: shop)
+            self.shop?.logo.loadImageAndCacheShop(into: image2, context: context, shop: shop) //logo cache
         }
         
         image2.clipsToBounds = true
