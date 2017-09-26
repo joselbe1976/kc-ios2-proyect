@@ -13,25 +13,6 @@ import MapKit
 import SVProgressHUD
 
 
-class Note: NSObject, MKAnnotation {
-    var title: String?
-    var subtitle: String?
-    var coordinate: CLLocationCoordinate2D
-    var name : String?
-
-    
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, name: String) {
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
-        self.name = name
-   
-
-    }
-}
-
-
-
 class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // CoreData Context
@@ -47,7 +28,27 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
+        
+        //Internet Control
+        
+        if isConnectedToNetwork() == false{
+            
+            let defaults = UserDefaults.standard
+            
+            if let _ = defaults.string(forKey: "once") {
+                // already saved
+            } else {    // first time
+            
+                //Salimos
+                self.navigationController?.popViewController(animated: true)
+                SVProgressHUD.showError(withStatus: "Sin conexión de internet")
+                return
+                
+            }
+        }
+        
+        
+        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
 
         
         // REGISTER SHOPCELL
@@ -102,7 +103,7 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             
             
             
-            let cacheInteractor = SaveAllShopsInteractorImpl()
+            let cacheInteractor = SaveAllInteractorImpl()
             cacheInteractor.execute(shops: shops, context: self.context, onSuccess: { (shops: Shops) in
                 SetExecutedOnceInteractorImpl().execute()
                 

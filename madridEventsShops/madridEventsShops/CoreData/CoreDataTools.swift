@@ -45,5 +45,43 @@ public class  coreDataTools{
     }
 
 
+    
+    //Get All EventsCD
+    public func getAllEvents(context: NSManagedObjectContext) -> [EventCD] {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "EventCD")
+        
+        var eventCD : [EventCD]!
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            eventCD = results as! [EventCD]
+            
+        } catch  {
+            
+        }
+        
+        return eventCD
+    }
+    
+    public func getEventFilterName(context: NSManagedObjectContext, name : String) -> EventCD {
+        
+        var eventCD : EventCD?
+        let predicate = NSPredicate(format: "name = %@", name)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "EventCD")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            eventCD = (results as! [EventCD])[0]
+            
+        } catch  {
+            
+        }
+        
+        return eventCD!
+    }
+
+    
 
 }

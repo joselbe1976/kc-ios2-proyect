@@ -49,3 +49,46 @@ func mapShopIntoShopCD(context: NSManagedObjectContext, shop: Shop) -> ShopCD {
     return shopCD
 }
 
+
+
+func mapEventCDIntoEvent(eventCD: EventCD) -> Event {
+    let event = Event(name: eventCD.name ?? "Empty")
+    event.address = eventCD.address ?? ""
+    event.image = eventCD.image ?? ""
+    event.logo = eventCD.logo ?? ""
+    
+    event.latitude = eventCD.latitude
+    event.longitude = eventCD.logitude
+    
+    event.description = eventCD.descrip ?? ""
+    event.openingHours = eventCD.openingHours ?? ""
+    
+    //Cache logo and Image
+    event.logo_data = eventCD.logo_data
+    event.image_data = eventCD.image_data
+    event.googleMaps_data = eventCD.googlemaps_data
+    
+    return event
+}
+
+func mapEventIntoEventCD(context: NSManagedObjectContext, event: Event) -> EventCD {
+  
+    let eventCD = EventCD(context: context)
+    eventCD.name = event.name
+    eventCD.address = event.address
+    eventCD.image = event.image
+    eventCD.logo = event.logo
+    
+    eventCD.latitude = event.latitude ?? 0.0
+    eventCD.logitude = event.longitude ?? 0.0
+    eventCD.descrip = event.description
+    eventCD.openingHours = event.openingHours
+    
+    //Cache Logo and Image
+    eventCD.logo_data = event.logo_data
+    eventCD.image_data = event.image_data
+    eventCD.googlemaps_data = event.googleMaps_data
+    
+    return eventCD
+}
+

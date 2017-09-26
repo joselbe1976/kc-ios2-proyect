@@ -83,6 +83,60 @@ extension String {
     }
     
    
+    
+    
+    func loadImageAndCacheEvent (into imageView: UIImageView, context : NSManagedObjectContext, event : Event, typeImage : String = "logo") {
+        
+        let queue = OperationQueue()
+        queue.addOperation {
+            if let url = URL(string: self),
+                let data = NSData (contentsOf: url),
+                let logo = UIImage (data: data as Data) {
+                
+                // Main Thread control
+                OperationQueue.main.addOperation {
+                    imageView.image = logo
+                    
+                    
+                    //Cache With CoreData. Add The cache. Was verificated when componen the cell
+                    
+                    
+                    let predicate = NSPredicate(format: "name = %@", event.name)
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "EventCD")
+                    fetchRequest.predicate = predicate
+                    
+                    do {
+                        let results = try context.fetch(fetchRequest)
+                        let eventCD = (results as! [EventCD])[0]
+                        
+                        if typeImage == "logo"{
+                            print("es cache de Logo")
+                            eventCD.logo_data = data
+                        }
+                        else if typeImage == "google" {
+                            print("es cache de Google")
+                            eventCD.googlemaps_data = data
+                            
+                            
+                        }
+                        else{
+                            print("es cache de imagen")
+                            eventCD.image_data = data
+                        }
+                        try context.save()
+                        
+                        
+                    } catch  {
+                        
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
+
+    
 }
 
 

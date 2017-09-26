@@ -13,3 +13,10 @@ protocol DownloadAllShopsInteractor {
     func execute(onSuccess: @escaping (Shops) -> Void, onError: errorClosure)
     func execute(onSuccess: @escaping (Shops) -> Void)
 }
+
+protocol DownloadAllEventsInteractor {
+    // execute: downloads all evemnts. Return on the main thread
+    func execute(onSuccess: @escaping (Events) -> Void, onError: errorClosure)
+    func execute(onSuccess: @escaping (Events) -> Void)
+}
+

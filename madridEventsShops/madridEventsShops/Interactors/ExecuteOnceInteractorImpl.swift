@@ -19,3 +19,15 @@ class ExecuteOnceInteractorImpl: ExecuteOnceInteractor {
         }
     }
 }
+
+class ExecuteSecondInteractorImpl: ExecuteOnceInteractor {
+    func execute(closure: () -> Void) {
+        let defaults = UserDefaults.standard
+        
+        if let _ = defaults.string(forKey: "two") {
+            // already saved
+        } else {    // first time
+            closure()
+        }
+    }
+}

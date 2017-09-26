@@ -42,3 +42,39 @@ class DownloadAllShopsInteractorNSURLSessionImpl: DownloadAllShopsInteractor {
     
     
 }
+
+
+class DownloadAllEventsInteractorNSURLSessionImpl: DownloadAllEventsInteractor {
+    func execute(onSuccess: @escaping (Events) -> Void, onError: errorClosure) {
+        let urlString = "https://madrid-shops.com/json_new/getActivities.php"
+        
+        let session = URLSession.shared
+        if let url = URL(string: urlString) {
+            let task = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+                
+                OperationQueue.main.addOperation {
+                    assert(Thread.current == Thread.main)
+                    
+                    if error == nil {
+                        // OK
+                        
+                        let events = parseEvents(data: data!)
+                        onSuccess(events)
+                    } else {
+                        // Error
+                        if let myError = onError {
+                            myError(error!)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func execute(onSuccess: @escaping (Events) -> Void) {
+        execute(onSuccess: onSuccess, onError: nil)
+    }
+    
+    
+}

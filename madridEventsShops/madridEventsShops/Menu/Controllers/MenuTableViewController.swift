@@ -12,10 +12,17 @@ class MenuTableViewController: UITableViewController {
     // Core Data
     var cds = CoreDataStack()
     var context: NSManagedObjectContext?
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //internet connection
+        if isConnectedToNetwork() == false{
+            SVProgressHUD.showError(withStatus: NSLocalizedString("INTERNET_NO", comment: "No internet connection"))
+           
+        }
         
         
         //Core Data Conext
@@ -77,6 +84,11 @@ class MenuTableViewController: UITableViewController {
     
     // selected Menu
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+
+        
+        
+        
         
         if (indexPath.row == 0){
             

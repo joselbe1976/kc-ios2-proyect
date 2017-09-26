@@ -17,3 +17,14 @@ class SetExecutedOnceInteractorImpl: SetExecutedOnceInteractor {
         defaults.synchronize()
     }
 }
+
+
+class SetExecutedSecondInteractorImpl: SetExecutedOnceInteractor {
+    func execute() {
+        let defaults = UserDefaults.standard
+        
+        defaults.set("SAVED", forKey: "two")
+        
+        defaults.synchronize()
+    }
+}

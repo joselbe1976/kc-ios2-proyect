@@ -13,6 +13,7 @@ class ShopDetailViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var textDescription: UITextView!
+    @IBOutlet weak var ShopDetail: UILabel!
     
     var context: NSManagedObjectContext?
     var shop: Shop?
@@ -44,21 +45,22 @@ class ShopDetailViewController: UIViewController {
     func refresh(){
         
         self.textDescription.text = shop?.description
+       // self.ShopDetail.text = shop?.openingHours
         
         //image and Cache Control
         if let imagen = shop?.googleMaps_data{
             
             //esta cacheado, lo meto en la imagen
-            image.image = UIImage(data: imagen as Data)
+            image.image = UIImage(data: imagen as Data)?.resizeImage(targetSize: CGSize(width: 320, height: 320))
         }
-        /*else{
-            //No esta, cargamos y cacheado
-            
-            shop?.image.loadImageAndCacheShop(into: image, context: self.context!, shop: self.shop!, typeImage: "image") //image cache
-        }
- */
+        else{
+            //error de excess of use googleMap. use image default
+                image.image = #imageLiteral(resourceName: "googleDefault.png").resizeImage(targetSize: CGSize(width: 320, height: 320))
+            }
         
     }
+    
+    
 
    
 }

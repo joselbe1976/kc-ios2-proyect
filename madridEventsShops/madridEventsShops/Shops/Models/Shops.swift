@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol ShopsProtocol{
+public protocol KCProtocol{
     func count() -> Int
     func add(shop: Shop)
     func get(index: Int) -> Shop
 }
 
 
-public class Shops : ShopsProtocol {
+public class Shops : KCProtocol {
     
     private var shopsList : [Shop]?
     
