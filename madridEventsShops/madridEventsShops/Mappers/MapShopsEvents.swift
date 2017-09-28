@@ -17,7 +17,7 @@ func mapShopCDIntoShop(shopCD: ShopCD) -> Shop {
     shop.latitude = shopCD.latitude
     shop.longitude = shopCD.logitude
     
-    shop.description = shopCD.descrip ?? ""
+    shop.descrip = shopCD.descrip ?? ""
     shop.openingHours = shopCD.openingHours ?? ""
     
     //Cache logo and Image
@@ -38,7 +38,7 @@ func mapShopIntoShopCD(context: NSManagedObjectContext, shop: Shop) -> ShopCD {
     
     shopCD.latitude = shop.latitude ?? 0.0
     shopCD.logitude = shop.longitude ?? 0.0
-    shopCD.descrip = shop.description
+    shopCD.descrip = shop.descrip
     shopCD.openingHours = shop.openingHours
     
     //Cache Logo and Image
@@ -60,7 +60,7 @@ func mapEventCDIntoEvent(eventCD: EventCD) -> Event {
     event.latitude = eventCD.latitude
     event.longitude = eventCD.logitude
     
-    event.description = eventCD.descrip ?? ""
+    event.descrip = eventCD.descrip ?? ""
     event.openingHours = eventCD.openingHours ?? ""
     
     //Cache logo and Image
@@ -81,7 +81,7 @@ func mapEventIntoEventCD(context: NSManagedObjectContext, event: Event) -> Event
     
     eventCD.latitude = event.latitude ?? 0.0
     eventCD.logitude = event.longitude ?? 0.0
-    eventCD.descrip = event.description
+    eventCD.descrip = event.descrip
     eventCD.openingHours = event.openingHours
     
     //Cache Logo and Image

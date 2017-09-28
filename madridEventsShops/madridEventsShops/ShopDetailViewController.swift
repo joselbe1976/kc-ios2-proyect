@@ -44,8 +44,8 @@ class ShopDetailViewController: UIViewController {
     
     func refresh(){
         
-        self.textDescription.text = shop?.description
-       // self.ShopDetail.text = shop?.openingHours
+        self.textDescription.text = shop?.descrip
+        self.ShopDetail.text = shop?.openingHours
         
         //image and Cache Control
         if let imagen = shop?.googleMaps_data{

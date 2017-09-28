@@ -24,11 +24,11 @@ func parseShops(data: Data) -> Shops {
             shop.image = shopJson["img"] as! String
             
             if (langStr == "es"){
-                shop.description = shopJson["description_es"] as! String
+                shop.descrip = shopJson["description_es"] as! String
                 shop.openingHours = shopJson["opening_hours_es"] as! String
             }
             else{
-                shop.description = shopJson["description_en"] as! String
+                shop.descrip = shopJson["description_en"] as! String
                 shop.openingHours = shopJson["opening_hours_en"] as! String
             }
             shop.latitude = (shopJson["gps_lat"] as? String)!.floatValue()
@@ -63,11 +63,11 @@ func parseEvents(data: Data) -> Events {
             event.image = shopJson["img"] as! String
             
             if (langStr == "es"){
-                event.description = shopJson["description_es"] as! String
+                event.descrip = shopJson["description_es"] as! String
                 event.openingHours = shopJson["opening_hours_es"] as! String
             }
             else{
-                event.description = shopJson["description_en"] as! String
+                event.descrip = shopJson["description_en"] as! String
                 event.openingHours = shopJson["opening_hours_en"] as! String
             }
             event.latitude = (shopJson["gps_lat"] as? String)!.floatValue()

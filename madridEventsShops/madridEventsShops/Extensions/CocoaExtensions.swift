@@ -32,15 +32,17 @@ extension String {
     }
     
     func loadImageAndCacheShop (into imageView: UIImageView, context : NSManagedObjectContext, shop : Shop, typeImage : String = "logo") {
-       
-        let queue = OperationQueue()
-        queue.addOperation {
+        //Elimino el trabajo en segundo plano por espeficicacion del proyecto de keepcoding, que quieren que este todo cargado ... y como el usuario esta esperando no tiene
+        // sentido lanzarlo en llamadas asincronas.
+        
+      //  let queue = OperationQueue()
+      //  queue.addOperation {
             if let url = URL(string: self),
                 let data = NSData (contentsOf: url),
                 let logo = UIImage (data: data as Data) {
                 
                 // Main Thread control
-                OperationQueue.main.addOperation {
+              //  OperationQueue.main.addOperation {
                     imageView.image = logo
                     
                     
@@ -77,8 +79,8 @@ extension String {
                     }
 
                     
-                }
-                }
+               // }
+               // }
         }
     }
     
@@ -87,14 +89,19 @@ extension String {
     
     func loadImageAndCacheEvent (into imageView: UIImageView, context : NSManagedObjectContext, event : Event, typeImage : String = "logo") {
         
-        let queue = OperationQueue()
-        queue.addOperation {
+        
+    //Elimino el trabajo en segundo plano por espeficicacion del proyecto de keepcoding, que quieren que este todo cargado ... y como el usuario esta esperando no tiene
+    // sentido lanzarlo en llamadas asincronas.
+        
+        
+    //    let queue = OperationQueue()
+    //    queue.addOperation {
             if let url = URL(string: self),
                 let data = NSData (contentsOf: url),
                 let logo = UIImage (data: data as Data) {
                 
                 // Main Thread control
-                OperationQueue.main.addOperation {
+              //  OperationQueue.main.addOperation {
                     imageView.image = logo
                     
                     
@@ -131,9 +138,9 @@ extension String {
                     }
                     
                     
-                }
+             //   }
             }
-        }
+       // }
     }
 
     

@@ -24,6 +24,10 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     //Location
     var locationManager: CLLocationManager?
+    var lastMapSelectShop : Shop!
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +63,10 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
 
         
         //User Autorization
-        locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager?.delegate = self
-        locationManager?.startUpdatingLocation()
+        self.locationManager = CLLocationManager()
+        self.locationManager?.requestWhenInUseAuthorization()
+        self.locationManager?.delegate = self
+        self.locationManager?.startUpdatingLocation()
         
         
         //configure the MapKit
@@ -182,18 +186,29 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         
     }
     
+    //error location user
+    func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error){
+        print("** ERROR LOCATING USER")
+    }
+    
+    
+    //select then pin in map. I'm gooint to get the Shop
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if view == mapView.userLocation {
             return
         }
         
-        print("Touch")
+        //last select Shop (tap in pin)
+        let nota : Note = view.annotation as! Note
+        lastMapSelectShop = nota.entity
+        
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         print("deselect")
     }
 
+    
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -209,6 +224,9 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
             
+            view.pinColor = .purple
+            view.canShowCallout = true
+            view.animatesDrop = true
             
             
             //sacamos el logo de CoreData
@@ -220,6 +238,17 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
             if let logoData = shopCD.logo_data{
                 let mapsButtom = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
                 mapsButtom.setBackgroundImage(UIImage(data: logoData as Data), for: UIControlState())
+                
+                //creamos un Tap gesture y se lo asignamos al boton
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapPin))
+                tapGesture.numberOfTouchesRequired = 1  // numero de dedos
+                tapGesture.numberOfTapsRequired = 1     // veces que los dedos golpean la pantalla
+                mapsButtom.addGestureRecognizer(tapGesture) //añadimos el Gesto al boton
+ 
+
+                
+                
+                
                 view.rightCalloutAccessoryView = mapsButtom
             } else {
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -227,6 +256,20 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
         return view
     }
+    
+    //tap in popup of pin in the map
+    @objc func tapPin (){
+        
+        if let lastShop = lastMapSelectShop{
+            //push detail controller
+           
+            let vcDetail = ShopDetailViewController(shop: lastShop, context: self.context)
+            self.navigationController?.pushViewController(vcDetail, animated: true)
+            
+        }
+        
+    }
+ 
     
     
     // Fill All point in the map from CoreData
@@ -241,8 +284,9 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         for shopCD in shopsCd {
             let location = CLLocation(latitude: CLLocationDegrees(shopCD.latitude), longitude: CLLocationDegrees(shopCD.logitude))
             
-            let n=Note(coordinate: location.coordinate, title: shopCD.name!, subtitle: shopCD.address!, name: shopCD.name!)
-            self.map.addAnnotation(n)
+            let pin=Note(coordinate: location.coordinate, title: shopCD.name!, subtitle: shopCD.address!, name: shopCD.name!, entity: mapShopCDIntoShop(shopCD: shopCD))
+            
+            self.map.addAnnotation(pin)
 
         }
         //piut the delegate
@@ -287,6 +331,10 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         
     }
     
+    
+ 
+    
+   
 
 
     }

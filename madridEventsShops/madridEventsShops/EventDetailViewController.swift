@@ -39,7 +39,7 @@ class EventDetailViewController: UIViewController {
     //generic function
     func refresh() -> Void{
         
-        self.text.text = event?.description
+        self.text.text = event?.descrip
         self.label.text = event?.address
         
         //image and Cache Control
@@ -47,6 +47,10 @@ class EventDetailViewController: UIViewController {
             
             //esta cacheado, lo meto en la imagen
             image.image = UIImage(data: img as Data) //?.resizeImage(targetSize: CGSize(width: 320, height: 320))
+        }
+        else{
+            //error de excess of use googleMap. use image default
+            image.image = #imageLiteral(resourceName: "googleDefault.png").resizeImage(targetSize: CGSize(width: 320, height: 320))
         }
 
 

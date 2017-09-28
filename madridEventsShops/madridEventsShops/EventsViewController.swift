@@ -25,6 +25,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     //Location
     var locationManager: CLLocationManager?
+    var lastMapSelectEvent : Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,8 +190,17 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         if view == mapView.userLocation {
             return
         }
-        
-        print("Touch")
+       
+        //last select Shop (tap in pin)
+        do{
+            let nota : Note = try view.annotation as! Note
+            lastMapSelectEvent = nota.entity as! Event
+        }
+        catch {
+            print("error mapkit pin get")
+        }
+   
+
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -217,12 +227,21 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             //sacamos el logo de CoreData
             
             let tools = coreDataTools()
-            let shopCD = tools.getShopsFilterName(context: self.context, name: annotation.title as! String)
+            let eventCD = tools.getEventFilterName(context: self.context, name: annotation.title as! String)
+           
             
-            
-            if let logoData = shopCD.logo_data{
+            if let logoData = eventCD.logo_data{
                 let mapsButtom = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
                 mapsButtom.setBackgroundImage(UIImage(data: logoData as Data), for: UIControlState())
+                
+                
+                //creamos un Tap gesture y se lo asignamos al boton
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapPin))
+                tapGesture.numberOfTouchesRequired = 1  // numero de dedos
+                tapGesture.numberOfTapsRequired = 1     // veces que los dedos golpean la pantalla
+                mapsButtom.addGestureRecognizer(tapGesture) //añadimos el Gesto al boton
+                
+                
                 view.rightCalloutAccessoryView = mapsButtom
             } else {
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -230,6 +249,21 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         }
         return view
     }
+    
+    //tap in popup of pin in the map
+    @objc func tapPin (){
+        
+        if let lastEvent = lastMapSelectEvent{
+            //push detail controller
+            
+            let vcDetail =  EventDetailViewController(event: lastEvent, context: self.context)
+            self.navigationController?.pushViewController(vcDetail, animated: true)
+            
+        }
+        
+    }
+    
+
     
     
     // Fill All point in the map from CoreData
@@ -244,15 +278,17 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         for eventCD in eventsCD {
             let location = CLLocation(latitude: CLLocationDegrees(eventCD.latitude), longitude: CLLocationDegrees(eventCD.logitude))
             
-            let n=Note(coordinate: location.coordinate, title: eventCD.name!, subtitle: eventCD.address!, name: eventCD.name!)
+            let n=Note(coordinate: location.coordinate, title: eventCD.name!, subtitle: eventCD.address!, name: eventCD.name!, entity: mapEventCDIntoEvent(eventCD: eventCD) as Shop)
             self.map.addAnnotation(n)
             
         }
-        //piut the delegate
-        self.map.delegate = self
+
         
         if eventsCD.count > 0 {
+            //put the delegate
+            self.map.delegate = self
             SVProgressHUD.dismiss()
+            
         }
     }
     

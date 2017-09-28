@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class Shop {
+public class Shop : NSObject {
     var name         : String
-    var description  : String   = ""
+    var descrip  : String   = ""
     var latitude     : Float?   = nil
     var longitude    : Float?   = nil
     var image        : String   = ""
