@@ -25,7 +25,7 @@ extension EventsViewController : UITableViewDelegate, UITableViewDataSource{
         
         let eventCD: EventCD = fetchedResultsController.object(at: indexPath)
         
-        //cell.refresh(shop: mapEventCDIntoEvent(eventCD: eventCD), context: self.context)
+        cell.refresh(event: mapEventCDIntoEvent(eventCD: eventCD), context: self.context)
         
         return cell
     }
@@ -39,9 +39,9 @@ extension EventsViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //push detail controller
-         let eventCD: EventCD = fetchedResultsController.object(at: indexPath)
-      //  let vcDetail = ShopDetailViewController(shop: mapShopCDIntoShop(shopCD: shopCD), context: self.context)
-      //  self.navigationController?.pushViewController(vcDetail, animated: true)
+        let eventCD: EventCD = fetchedResultsController.object(at: indexPath)
+        let vcDetail = EventDetailViewController(event : mapEventCDIntoEvent(eventCD: eventCD) ,context: self.context)
+        self.navigationController?.pushViewController(vcDetail, animated: true)
     }
     
 }

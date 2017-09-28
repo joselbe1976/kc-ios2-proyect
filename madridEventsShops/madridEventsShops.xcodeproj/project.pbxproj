@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C3D659A577143467DDC94A1A /* Pods_madridEventsShops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79BD0DE7F7E1A02121DD4A5 /* Pods_madridEventsShops.framework */; };
+		D84C91F21F7D57A300B37C93 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84C91F01F7D57A300B37C93 /* EventDetailViewController.swift */; };
+		D84C91F31F7D57A300B37C93 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D84C91F11F7D57A300B37C93 /* EventDetailViewController.xib */; };
 		D86D9E951F7ACB8F008B2944 /* Internet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86D9E941F7ACB8F008B2944 /* Internet.swift */; };
 		D86D9E971F7AD20D008B2944 /* googleDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = D86D9E961F7AD20D008B2944 /* googleDefault.png */; };
 		D87AD2571F7AE4890008BC7C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD2561F7AE4890008BC7C /* Event.swift */; };
@@ -70,6 +72,8 @@
 /* Begin PBXFileReference section */
 		37E370E772E7B372EAC2F5B7 /* Pods-madridEventsShops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-madridEventsShops.release.xcconfig"; path = "Pods/Target Support Files/Pods-madridEventsShops/Pods-madridEventsShops.release.xcconfig"; sourceTree = "<group>"; };
 		7CD3DBC8923203DE407651B5 /* Pods-madridEventsShops.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-madridEventsShops.debug.xcconfig"; path = "Pods/Target Support Files/Pods-madridEventsShops/Pods-madridEventsShops.debug.xcconfig"; sourceTree = "<group>"; };
+		D84C91F01F7D57A300B37C93 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		D84C91F11F7D57A300B37C93 /* EventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailViewController.xib; sourceTree = "<group>"; };
 		D86D9E941F7ACB8F008B2944 /* Internet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internet.swift; sourceTree = "<group>"; };
 		D86D9E961F7AD20D008B2944 /* googleDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googleDefault.png; sourceTree = "<group>"; };
 		D87AD2561F7AE4890008BC7C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				D8EEB82E1F782C64008C49F6 /* EventsViewController.xib */,
 				D87AD25C1F7AEA940008BC7C /* EventCell.swift */,
 				D87AD25D1F7AEA940008BC7C /* EventCell.xib */,
+				D84C91F01F7D57A300B37C93 /* EventDetailViewController.swift */,
+				D84C91F11F7D57A300B37C93 /* EventDetailViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 				D8C51FB51F7846E900B89B7D /* ShopCell.xib in Resources */,
 				D8EEB82C1F782C4C008C49F6 /* ShopsViewController.xib in Resources */,
 				D8EEB7E71F78294F008C49F6 /* Assets.xcassets in Resources */,
+				D84C91F31F7D57A300B37C93 /* EventDetailViewController.xib in Resources */,
 				D86D9E971F7AD20D008B2944 /* googleDefault.png in Resources */,
 				D8EEB8301F782C64008C49F6 /* EventsViewController.xib in Resources */,
 				D87AD25F1F7AEA940008BC7C /* EventCell.xib in Resources */,
@@ -582,6 +589,7 @@
 				D8C394811F7986C50062986B /* CoreDataTools.swift in Sources */,
 				D8EEB8561F783509008C49F6 /* SetExecutedOnceInteractorImpl.swift in Sources */,
 				D8EEB8571F783509008C49F6 /* Typealias.swift in Sources */,
+				D84C91F21F7D57A300B37C93 /* EventDetailViewController.swift in Sources */,
 				D8EEB81F1F782A2E008C49F6 /* menuModels.swift in Sources */,
 				D8EEB8521F783509008C49F6 /* ExecuteOnceInteractor.swift in Sources */,
 				D8EEB84E1F783509008C49F6 /* DownloadAllnteractor.swift in Sources */,
