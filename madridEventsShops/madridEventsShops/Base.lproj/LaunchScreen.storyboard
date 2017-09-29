@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="madrid.jpg" width="720" height="960"/>
+        <image name="madrid.jpg" width="750" height="1334"/>
     </resources>
 </document>

@@ -25,9 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = menuTableVC //table wrapper in navigator
         
+        //proxy for colors
+        self.proxyApparience()
+        
         return true
 
     }
+    
+    func proxyApparience(){
+        let AppBackGroundColor = UIColor.black
+        let AppForetextColor = UIColor.white
+        
+        UINavigationBar.appearance().barTintColor = AppBackGroundColor
+        UINavigationBar.appearance().barStyle = .black
+        UINavigationBar.appearance().tintColor = AppForetextColor
+        
+        
+           }
 
     
     

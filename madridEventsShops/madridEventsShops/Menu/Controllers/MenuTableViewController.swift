@@ -88,12 +88,19 @@ class MenuTableViewController: UITableViewController {
         cell.LabelText.text = menuItem?.title
         cell.imageCell.image = UIImage(named: (menuItem?.image)!)
         
+        //setup de background
+        if menuItem?.id == "01" {
+            cell.background.image = UIImage(named: "shopsMadrid.jpg")
+        }else{
+             cell.background.image = UIImage(named: "eventsMadrid.jpg")
+        }
+        
         return cell
     }
     
     //cell height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 180
     }
     
     // selected Menu
