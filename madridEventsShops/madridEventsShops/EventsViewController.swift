@@ -30,25 +30,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //Internet Control
-        
-        if isConnectedToNetwork() == false{
-            
-            let defaults = UserDefaults.standard
-            
-            if let _ = defaults.string(forKey: "two") {
-                // already saved
-            } else {    // first time
-                
-                //Salimos
-                self.navigationController?.popViewController(animated: true)
-                SVProgressHUD.showError(withStatus: "Sin conexión de internet")
-                return
-                
-            }
-        }
-        
+        self.title = NSLocalizedString("EVENTS_TITLE", comment: "Title")
         
         SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
         
@@ -78,12 +60,6 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
         
-        //Load Data from Json If is not store
-        ExecuteSecondInteractorImpl().execute {
-            
-            initializeData()
-            
-        }
         
         self.CollectionView.delegate = self
         self.CollectionView.dataSource = self
@@ -93,38 +69,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
     }
     
-    
-    
-    func initializeData() {
-       
-        let downloadInteractor : DownloadAllEventsInteractor = DownloadAllEventsInteractorNSURLSessionImpl()
-        
-        
-        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
-        
-        downloadInteractor.execute { (event: Events) in
-            // todo OK
-            
-            
-            let cacheInteractor = SaveAllInteractorImpl()
-           
-            cacheInteractor.execute(events: event, context: self.context, onSuccess: { (events: Events) in
-                SetExecutedSecondInteractorImpl().execute()
-                
-                self._fetchedResultsController = nil
-                self.CollectionView.delegate = self
-                self.CollectionView.dataSource = self
-                self.CollectionView.reloadData()
-                
-                //cache all images
-                self.CacheAllData()
-                
-                
-            })
-        }
-    }
-    
-    
+  
     
     // MARK: - Fetched results controller
     var _fetchedResultsController: NSFetchedResultsController<EventCD>? = nil
@@ -172,6 +117,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         print("** MAP FINISH LOADING")
+        SVProgressHUD.dismiss()
     }
     
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
@@ -287,43 +233,10 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         if eventsCD.count > 0 {
             //put the delegate
             self.map.delegate = self
-            SVProgressHUD.dismiss()
-            
         }
     }
     
-    //Cachhe All Images
-    func CacheAllData(){
-        
-        //leemos todas las tiendas
-        let obj = coreDataTools()
-        let eventsCd : [EventCD] = obj.getAllEvents(context: self.context)
-        
-        //all items
-        for eventCd in eventsCd {
-            
-            let iv = UIImageView()
-            
-            //logos
-            eventCd.logo?.loadImageAndCacheEvent(into: iv, context: self.context, event: mapEventCDIntoEvent(eventCD: eventCd))
-            
-            //images
-            eventCd.image?.loadImageAndCacheEvent(into: iv, context: self.context, event: mapEventCDIntoEvent(eventCD: eventCd), typeImage: "image")
-
-            //location GoogleMaps Image
-            let googleURL : String = "https://maps.googleapis.com/maps/api/staticmap?center=XXX,YYY&zoom=17&size=320x220&scale=2&markers=%7Ccolor:0x9C7B14%7CXXX,YYY"
-            
-            let urlStringFinal = googleURL.replacingOccurrences(of: "YYY", with: String(describing: eventCd.logitude)).replacingOccurrences(of: "XXX", with: String(describing: eventCd.latitude)).replacingOccurrences(of: ",0.0", with: "")
-            
-            urlStringFinal.loadImageAndCacheEvent(into: iv, context: self.context, event: mapEventCDIntoEvent(eventCD: eventCd), typeImage: "google")
-            
-        }
-        
-        //fill maps points
-        self.FillMapPoints()
-        
-        
-    }
+   
     
     
 

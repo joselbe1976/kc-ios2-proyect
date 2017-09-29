@@ -17,6 +17,7 @@
 		D87AD25E1F7AEA940008BC7C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD25C1F7AEA940008BC7C /* EventCell.swift */; };
 		D87AD25F1F7AEA940008BC7C /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87AD25D1F7AEA940008BC7C /* EventCell.xib */; };
 		D87AD2621F7AEAF70008BC7C /* NoteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD2611F7AEAF70008BC7C /* NoteMap.swift */; };
+		D899EAC71F7EA1BA006A1473 /* DownloadJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D899EAC61F7EA1BA006A1473 /* DownloadJSON.swift */; };
 		D8B58C151F783B820003B116 /* ShopsViewController+CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B58C141F783B820003B116 /* ShopsViewController+CollectionViewController.swift */; };
 		D8C394811F7986C50062986B /* CoreDataTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C394801F7986C50062986B /* CoreDataTools.swift */; };
 		D8C394841F7991450062986B /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C394821F7991450062986B /* ShopDetailViewController.swift */; };
@@ -81,6 +82,7 @@
 		D87AD25C1F7AEA940008BC7C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		D87AD25D1F7AEA940008BC7C /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		D87AD2611F7AEAF70008BC7C /* NoteMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteMap.swift; sourceTree = "<group>"; };
+		D899EAC61F7EA1BA006A1473 /* DownloadJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJSON.swift; sourceTree = "<group>"; };
 		D8B58C141F783B820003B116 /* ShopsViewController+CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShopsViewController+CollectionViewController.swift"; sourceTree = "<group>"; };
 		D8C394801F7986C50062986B /* CoreDataTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTools.swift; sourceTree = "<group>"; };
 		D8C394821F7991450062986B /* ShopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				D8EEB8141F782A2E008C49F6 /* MenuTableViewController.swift */,
 				D8EEB8201F782A9D008C49F6 /* MenuTableViewCell.swift */,
 				D8EEB8211F782A9D008C49F6 /* MenuTableViewCell.xib */,
+				D899EAC61F7EA1BA006A1473 /* DownloadJSON.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				D8EEB82F1F782C64008C49F6 /* EventsViewController.swift in Sources */,
 				D8EEB8421F783482008C49F6 /* MapShopsEvents.swift in Sources */,
 				D8EEB7E51F78294F008C49F6 /* madridEventsShops.xcdatamodeld in Sources */,
+				D899EAC71F7EA1BA006A1473 /* DownloadJSON.swift in Sources */,
 				D8EEB80F1F782A28008C49F6 /* CocoaExtensions.swift in Sources */,
 				D87AD2571F7AE4890008BC7C /* Event.swift in Sources */,
 				D8EEB8041F7829E3008C49F6 /* Shops.swift in Sources */,

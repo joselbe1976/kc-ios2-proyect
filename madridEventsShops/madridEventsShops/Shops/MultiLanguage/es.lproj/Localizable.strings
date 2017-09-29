@@ -10,3 +10,5 @@ MENU_MADRID_SHOPS_TITLE = "Tiendas de Madrid" ;
 MENU_MADRID_EVENTS_TITLE = "Eventos de Madrid" ;
 MENU_MAIN_TITLE= "Menu";
 INTERNET_NO = "Sin conexion de internet";
+SHOPS_TITLE = "Tiendas";
+EVENTS_TITLE = "Eventos";

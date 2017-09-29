@@ -33,24 +33,8 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         super.viewDidLoad()
         
         
-        //Internet Control
-        
-        if isConnectedToNetwork() == false{
-            
-            let defaults = UserDefaults.standard
-            
-            if let _ = defaults.string(forKey: "once") {
-                // already saved
-            } else {    // first time
-            
-                //Salimos
-                self.navigationController?.popViewController(animated: true)
-                SVProgressHUD.showError(withStatus: "Sin conexión de internet")
-                return
-                
-            }
-        }
-        
+        self.title = NSLocalizedString("SHOPS_TITLE", comment: "Title")
+             
         
         SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
 
@@ -80,49 +64,18 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         
         SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
         
-        //Load Data from Json If is not store
-        ExecuteOnceInteractorImpl().execute {
-            
-            initializeData()
-            
-        }
+        
         
         self.shopsCollectionView.delegate = self
         self.shopsCollectionView.dataSource = self
 
         self.FillMapPoints()
-      //  self.CacheAllData() //quitar
+
         
     }
     
 
     
-    func initializeData() {
-        let downloadShopsInteractor: DownloadAllShopsInteractor = DownloadAllShopsInteractorNSURLSessionImpl()
-        
-        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
-        
-        downloadShopsInteractor.execute { (shops: Shops) in
-            // todo OK
-            
-            
-            
-            let cacheInteractor = SaveAllInteractorImpl()
-            cacheInteractor.execute(shops: shops, context: self.context, onSuccess: { (shops: Shops) in
-                SetExecutedOnceInteractorImpl().execute()
-                
-                self._fetchedResultsController = nil
-                self.shopsCollectionView.delegate = self
-                self.shopsCollectionView.dataSource = self
-                self.shopsCollectionView.reloadData()
-               
-                //cache all images
-                self.CacheAllData()
-
-                
-            })
-        }
-    }
    
     
     
@@ -172,7 +125,8 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         print("** MAP FINISH LOADING")
-           }
+        SVProgressHUD.dismiss()
+    }
     
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
         print("** START LOCATING USER")
@@ -292,49 +246,6 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         //piut the delegate
         self.map.delegate = self
         
-        if shopsCd.count > 0 {
-            SVProgressHUD.dismiss()
-        }
       }
   
-    //Cachhe All Images
-    func CacheAllData(){
-        
-        //leemos todas las tiendas
-        let obj = coreDataTools()
-        let shopsCd : [ShopCD] = obj.getAllShops(context: self.context)
-        
-        //all items
-        for shopCD in shopsCd {
-           
-            let iv = UIImageView()
-            
-            //logos
-            shopCD.logo?.loadImageAndCacheShop(into: iv, context: self.context, shop: mapShopCDIntoShop(shopCD: shopCD))
-            
-            //images
-            shopCD.image?.loadImageAndCacheShop(into: iv, context: self.context, shop: mapShopCDIntoShop(shopCD: shopCD), typeImage: "image")
-            
-            
-            //location GoogleMaps Image
-            let googleURL : String = "https://maps.googleapis.com/maps/api/staticmap?center=XXX,YYY&zoom=17&size=320x220&scale=2&markers=%7Ccolor:0x9C7B14%7CXXX,YYY"
-            
-            let urlStringFinal = googleURL.replacingOccurrences(of: "YYY", with: String(describing: shopCD.logitude)).replacingOccurrences(of: "XXX", with: String(describing: shopCD.latitude)).replacingOccurrences(of: ",0.0", with: "")
-            
-             urlStringFinal.loadImageAndCacheShop(into: iv, context: self.context, shop: mapShopCDIntoShop(shopCD: shopCD), typeImage: "google")
-            
-        }
-        
-        //fill maps points
-        self.FillMapPoints()
-        
-        
-    }
-    
-    
- 
-    
-   
-
-
-    }
+}
