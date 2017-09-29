@@ -28,8 +28,8 @@ public class menuMain{
         
         //Create the menu Items
         
-       let m1 = menuItem(id: "01", title: NSLocalizedString("MENU_MADRID_SHOPS_TITLE", comment: "Tiendas de Madrid"),  image: "shop.png")
-       let m2 =   menuItem(id: "02", title: NSLocalizedString("MENU_MADRID_EVENTS_TITLE", comment: "Eventos de  Madrid"), image: "event.png")
+       let m1 = menuItem(id: "01", title: NSLocalizedString("MENU_MADRID_SHOPS_TITLE", comment: "Tiendas de Madrid"),  image: "shop2.png")
+       let m2 =   menuItem(id: "02", title: NSLocalizedString("MENU_MADRID_EVENTS_TITLE", comment: "Eventos de  Madrid"), image: "event2.png")
        self.items.append(m1)
        self.items.append(m2)
         

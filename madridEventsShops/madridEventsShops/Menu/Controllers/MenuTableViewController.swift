@@ -90,9 +90,9 @@ class MenuTableViewController: UITableViewController {
         
         //setup de background
         if menuItem?.id == "01" {
-            cell.background.image = UIImage(named: "shopsMadrid.jpg")
+            cell.background.image = UIImage(named: "shopsMadrid2.jpg")
         }else{
-             cell.background.image = UIImage(named: "eventsMadrid.jpg")
+             cell.background.image = UIImage(named: "eventsMadrid2.jpg")
         }
         
         return cell
