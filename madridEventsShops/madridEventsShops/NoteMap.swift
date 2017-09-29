@@ -17,7 +17,7 @@ class Note: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var name : String?
     
-    var entity : Shop?
+    var entity : Shop? //reference
     
     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, name: String, entity : Shop) {
         self.coordinate = coordinate
