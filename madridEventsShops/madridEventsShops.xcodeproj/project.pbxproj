@@ -19,8 +19,6 @@
 		D86D9E971F7AD20D008B2944 /* googleDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = D86D9E961F7AD20D008B2944 /* googleDefault.png */; };
 		D87AD2571F7AE4890008BC7C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD2561F7AE4890008BC7C /* Event.swift */; };
 		D87AD25A1F7AEA510008BC7C /* EventsViewController+TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD2591F7AEA510008BC7C /* EventsViewController+TableViewController.swift */; };
-		D87AD25E1F7AEA940008BC7C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD25C1F7AEA940008BC7C /* EventCell.swift */; };
-		D87AD25F1F7AEA940008BC7C /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87AD25D1F7AEA940008BC7C /* EventCell.xib */; };
 		D87AD2621F7AEAF70008BC7C /* NoteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD2611F7AEAF70008BC7C /* NoteMap.swift */; };
 		D8B58C151F783B820003B116 /* ShopsViewController+CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B58C141F783B820003B116 /* ShopsViewController+CollectionViewController.swift */; };
 		D8C394811F7986C50062986B /* CoreDataTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C394801F7986C50062986B /* CoreDataTools.swift */; };
@@ -87,8 +85,6 @@
 		D86D9E961F7AD20D008B2944 /* googleDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googleDefault.png; sourceTree = "<group>"; };
 		D87AD2561F7AE4890008BC7C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D87AD2591F7AEA510008BC7C /* EventsViewController+TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventsViewController+TableViewController.swift"; sourceTree = "<group>"; };
-		D87AD25C1F7AEA940008BC7C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		D87AD25D1F7AEA940008BC7C /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		D87AD2611F7AEAF70008BC7C /* NoteMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteMap.swift; sourceTree = "<group>"; };
 		D8B58C141F783B820003B116 /* ShopsViewController+CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShopsViewController+CollectionViewController.swift"; sourceTree = "<group>"; };
 		D8C394801F7986C50062986B /* CoreDataTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTools.swift; sourceTree = "<group>"; };
@@ -177,9 +173,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D8368AD31F7ECDE600516791 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8C51FB21F7846E900B89B7D /* ShopCell.swift */,
+				D8C51FB31F7846E900B89B7D /* ShopCell.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		D86D9E931F7ACB7C008B2944 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				D8368AD31F7ECDE600516791 /* Controllers */,
 				D8EEB8081F782A06008C49F6 /* MultiLanguage */,
 				D8EEB80D1F782A28008C49F6 /* Extensions */,
 				D8EEB8051F7829FD008C49F6 /* CoreData */,
@@ -200,8 +206,6 @@
 				D8EEB82D1F782C64008C49F6 /* EventsViewController.swift */,
 				D87AD2591F7AEA510008BC7C /* EventsViewController+TableViewController.swift */,
 				D8EEB82E1F782C64008C49F6 /* EventsViewController.xib */,
-				D87AD25C1F7AEA940008BC7C /* EventCell.swift */,
-				D87AD25D1F7AEA940008BC7C /* EventCell.xib */,
 				D84C91F01F7D57A300B37C93 /* EventDetailViewController.swift */,
 				D84C91F11F7D57A300B37C93 /* EventDetailViewController.xib */,
 			);
@@ -371,8 +375,6 @@
 				D8EEB8291F782C4C008C49F6 /* ShopsViewController.swift */,
 				D8B58C141F783B820003B116 /* ShopsViewController+CollectionViewController.swift */,
 				D8EEB82A1F782C4C008C49F6 /* ShopsViewController.xib */,
-				D8C51FB21F7846E900B89B7D /* ShopCell.swift */,
-				D8C51FB31F7846E900B89B7D /* ShopCell.xib */,
 				D8C394821F7991450062986B /* ShopDetailViewController.swift */,
 				D8C394831F7991450062986B /* ShopDetailViewController.xib */,
 			);
@@ -511,7 +513,6 @@
 				D84C91F31F7D57A300B37C93 /* EventDetailViewController.xib in Resources */,
 				D86D9E971F7AD20D008B2944 /* googleDefault.png in Resources */,
 				D8EEB8301F782C64008C49F6 /* EventsViewController.xib in Resources */,
-				D87AD25F1F7AEA940008BC7C /* EventCell.xib in Resources */,
 				D8EEB8361F782E54008C49F6 /* event.png in Resources */,
 				D8C394851F7991450062986B /* ShopDetailViewController.xib in Resources */,
 				D8EEB8381F783083008C49F6 /* madrid.jpg in Resources */,
@@ -611,7 +612,6 @@
 				D8EEB85A1F78351B008C49F6 /* SaveAllShopsInteractor.swift in Sources */,
 				D8EEB8071F7829FD008C49F6 /* CoreDataStack.swift in Sources */,
 				D86D9E951F7ACB8F008B2944 /* Internet.swift in Sources */,
-				D87AD25E1F7AEA940008BC7C /* EventCell.swift in Sources */,
 				D8C51FB41F7846E900B89B7D /* ShopCell.swift in Sources */,
 				D8EEB7DD1F78294F008C49F6 /* AppDelegate.swift in Sources */,
 				D8EEB82B1F782C4C008C49F6 /* ShopsViewController.swift in Sources */,

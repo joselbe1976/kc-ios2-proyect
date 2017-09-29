@@ -21,11 +21,14 @@ extension EventsViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //create the cell
-        let cell : EventCell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+        let cell : ShopCell = tableView.dequeueReusableCell(withIdentifier: "ShopCell", for: indexPath) as! ShopCell
         
         let eventCD: EventCD = fetchedResultsController.object(at: indexPath)
         
-        cell.refresh(event: mapEventCDIntoEvent(eventCD: eventCD), context: self.context)
+        let event = mapEventCDIntoEvent(eventCD: eventCD)
+        let shop = event as Shop
+        
+        cell.refresh(shop: shop, context: self.context)
         
         return cell
     }

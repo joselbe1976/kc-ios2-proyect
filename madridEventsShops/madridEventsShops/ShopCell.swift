@@ -17,6 +17,8 @@ class ShopCell: UITableViewCell {
 
     @IBOutlet weak var image2: UIImageView!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
@@ -35,23 +37,31 @@ class ShopCell: UITableViewCell {
         self.shop = shop
         
         self.label.text = shop.name
+        self.subTitle.text = shop.openingHours
         
         //Miramos si estacacheado el logo.
         if let logo = shop.logo_data{
             
             //esta cacheado, lo meto en la imagen
             image2.image = UIImage(data: logo as Data)
-        }
-        else{
-            //No esta, cargamos y cacheado
             
-            self.shop?.logo.loadImageAndCacheShop(into: image2, context: context, shop: shop) //logo cache
+            image2.clipsToBounds = true
+            
+            //redimensiono la imagen
+            image2.image = image2.image?.resizeImage(targetSize: CGSize(width: 90  , height: 90))
         }
         
-        image2.clipsToBounds = true
+        if let background = shop.image_data{
+            
+            //esta cacheado, lo meto en la imagen
+            backgroundImage.image = UIImage(data: background as Data)
+        }
         
-        //redimensiono la imagen
-        image2.image = image2.image?.resizeImage(targetSize: CGSize(width: 90  , height: 90))
+        
+        
+        
+        
+        
    
     }
     

@@ -38,7 +38,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         // REGISTER SHOPCELL
         
         //registramos la celda
-        CollectionView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+        CollectionView.register(UINib(nibName: "ShopCell", bundle: nil), forCellReuseIdentifier: "ShopCell")
         
         
         
