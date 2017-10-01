@@ -31,8 +31,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         super.viewDidLoad()
         
         self.title = NSLocalizedString("EVENTS_TITLE", comment: "Title")
-        
-        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
+
         
         
         // REGISTER SHOPCELL
@@ -57,9 +56,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         let reg = self.map.regionThatFits(region)
         self.map.setRegion(reg, animated: true)
-        
-        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
-        
+
         
         self.CollectionView.delegate = self
         self.CollectionView.dataSource = self
@@ -117,7 +114,7 @@ class EventsViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         print("** MAP FINISH LOADING")
-        SVProgressHUD.dismiss()
+   
     }
     
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {

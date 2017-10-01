@@ -12,7 +12,8 @@ class MenuTableViewController: UITableViewController {
     // Core Data
     var cds = CoreDataStack()
     var context: NSManagedObjectContext?
-
+    
+    var Reachability : connectionControl!
     
     
     override func viewDidLoad() {
@@ -37,16 +38,8 @@ class MenuTableViewController: UITableViewController {
         self.title =  NSLocalizedString("MENU_MAIN_TITLE", comment: "Menu")
 
         
-        //internet connection
-        if isConnectedToNetwork() == false{
-            SVProgressHUD.showError(withStatus: NSLocalizedString("INTERNET_NO", comment: "No internet connection"))
-            
-        }
-        else
-        {
-            //control de descarga
-            self.DownloadManager()
-        }
+        //internet Control and Download
+        Reachability = connectionControl(observador: true, clausure: self.DownloadManager)
         
         
         
@@ -155,10 +148,7 @@ class MenuTableViewController: UITableViewController {
     
     func DownloadManager(){
         
-        if isConnectedToNetwork() == true{
-            
-            //OK internet Connection. If not downloades
-            
+                       
             if self.IsDownloaded() == false{
                 
                 // Shops And Events
@@ -170,11 +160,7 @@ class MenuTableViewController: UITableViewController {
                 }
                 
             }
-        }
-        else
-        {
-            SVProgressHUD.showError(withStatus: "Sin conexión de internet")
-        }
+       
 
     }
     

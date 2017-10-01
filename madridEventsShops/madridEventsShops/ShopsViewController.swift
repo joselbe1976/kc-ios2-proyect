@@ -36,8 +36,6 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         self.title = NSLocalizedString("SHOPS_TITLE", comment: "Title")
              
         
-        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
-
         
         // REGISTER SHOPCELL
 
@@ -61,10 +59,6 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         
         let reg = self.map.regionThatFits(region)
         self.map.setRegion(reg, animated: true)
-        
-        SVProgressHUD.show(withStatus: NSLocalizedString("GLOBAL_LOAD_DATA", comment: "Cargando datos"))
-        
-        
         
         self.shopsCollectionView.delegate = self
         self.shopsCollectionView.dataSource = self
@@ -125,7 +119,7 @@ class ShopsViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         print("** MAP FINISH LOADING")
-        SVProgressHUD.dismiss()
+
     }
     
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {

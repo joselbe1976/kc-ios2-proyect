@@ -13,14 +13,14 @@
 		D80ED8641F7EB6EC000D68FD /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80ED8631F7EB6EC000D68FD /* CoreDataTest.swift */; };
 		D80ED8661F7EB82F000D68FD /* ModelsMenuTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80ED8651F7EB82F000D68FD /* ModelsMenuTest.swift */; };
 		D80ED8681F7EBA6D000D68FD /* ModelsNoteMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80ED8671F7EBA6D000D68FD /* ModelsNoteMaps.swift */; };
-		D8368AD61F7ED2BE00516791 /* eventsMadrid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD41F7ED2BE00516791 /* eventsMadrid.jpg */; };
-		D8368AD71F7ED2BE00516791 /* shopsMadrid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD51F7ED2BE00516791 /* shopsMadrid.jpg */; };
-		D8368ADA1F7ED45E00516791 /* event.png in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD81F7ED45E00516791 /* event.png */; };
-		D8368ADB1F7ED45E00516791 /* shop.png in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD91F7ED45E00516791 /* shop.png */; };
-		D8368ADD1F7ED54000516791 /* madrid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8368ADC1F7ED54000516791 /* madrid.jpg */; };
+		D8368AD61F7ED2BE00516791 /* eventsMadrid2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD41F7ED2BE00516791 /* eventsMadrid2.jpg */; };
+		D8368AD71F7ED2BE00516791 /* shopsMadrid2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD51F7ED2BE00516791 /* shopsMadrid2.jpg */; };
+		D8368ADA1F7ED45E00516791 /* event2.png in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD81F7ED45E00516791 /* event2.png */; };
+		D8368ADB1F7ED45E00516791 /* shop2.png in Resources */ = {isa = PBXBuildFile; fileRef = D8368AD91F7ED45E00516791 /* shop2.png */; };
+		D8368ADD1F7ED54000516791 /* madrid2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8368ADC1F7ED54000516791 /* madrid2.jpg */; };
+		D83EA2E61F80EFF000676E30 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EA2E51F80EFF000676E30 /* Reachability.swift */; };
 		D84C91F21F7D57A300B37C93 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84C91F01F7D57A300B37C93 /* EventDetailViewController.swift */; };
 		D84C91F31F7D57A300B37C93 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D84C91F11F7D57A300B37C93 /* EventDetailViewController.xib */; };
-		D86D9E951F7ACB8F008B2944 /* Internet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86D9E941F7ACB8F008B2944 /* Internet.swift */; };
 		D86D9E971F7AD20D008B2944 /* googleDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = D86D9E961F7AD20D008B2944 /* googleDefault.png */; };
 		D87AD2571F7AE4890008BC7C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD2561F7AE4890008BC7C /* Event.swift */; };
 		D87AD25A1F7AEA510008BC7C /* EventsViewController+TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AD2591F7AEA510008BC7C /* EventsViewController+TableViewController.swift */; };
@@ -81,14 +81,14 @@
 		D80ED8631F7EB6EC000D68FD /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
 		D80ED8651F7EB82F000D68FD /* ModelsMenuTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelsMenuTest.swift; sourceTree = "<group>"; };
 		D80ED8671F7EBA6D000D68FD /* ModelsNoteMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelsNoteMaps.swift; sourceTree = "<group>"; };
-		D8368AD41F7ED2BE00516791 /* eventsMadrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eventsMadrid.jpg; sourceTree = "<group>"; };
-		D8368AD51F7ED2BE00516791 /* shopsMadrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shopsMadrid.jpg; sourceTree = "<group>"; };
-		D8368AD81F7ED45E00516791 /* event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event.png; sourceTree = "<group>"; };
-		D8368AD91F7ED45E00516791 /* shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop.png; sourceTree = "<group>"; };
-		D8368ADC1F7ED54000516791 /* madrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = madrid.jpg; sourceTree = "<group>"; };
+		D8368AD41F7ED2BE00516791 /* eventsMadrid2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eventsMadrid2.jpg; sourceTree = "<group>"; };
+		D8368AD51F7ED2BE00516791 /* shopsMadrid2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shopsMadrid2.jpg; sourceTree = "<group>"; };
+		D8368AD81F7ED45E00516791 /* event2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event2.png; sourceTree = "<group>"; };
+		D8368AD91F7ED45E00516791 /* shop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop2.png; sourceTree = "<group>"; };
+		D8368ADC1F7ED54000516791 /* madrid2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = madrid2.jpg; sourceTree = "<group>"; };
+		D83EA2E51F80EFF000676E30 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		D84C91F01F7D57A300B37C93 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		D84C91F11F7D57A300B37C93 /* EventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailViewController.xib; sourceTree = "<group>"; };
-		D86D9E941F7ACB8F008B2944 /* Internet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internet.swift; sourceTree = "<group>"; };
 		D86D9E961F7AD20D008B2944 /* googleDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googleDefault.png; sourceTree = "<group>"; };
 		D87AD2561F7AE4890008BC7C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D87AD2591F7AEA510008BC7C /* EventsViewController+TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventsViewController+TableViewController.swift"; sourceTree = "<group>"; };
@@ -186,9 +186,18 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		D83EA2E41F80EFD100676E30 /* InternetNetworks */ = {
+			isa = PBXGroup;
+			children = (
+				D83EA2E51F80EFF000676E30 /* Reachability.swift */,
+			);
+			name = InternetNetworks;
+			sourceTree = "<group>";
+		};
 		D86D9E931F7ACB7C008B2944 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				D83EA2E41F80EFD100676E30 /* InternetNetworks */,
 				D8368AD31F7ECDE600516791 /* Controllers */,
 				D8EEB8081F782A06008C49F6 /* MultiLanguage */,
 				D8EEB80D1F782A28008C49F6 /* Extensions */,
@@ -197,7 +206,6 @@
 				D87AD2601F7AEAEB0008BC7C /* mapkit */,
 				D86D9E961F7AD20D008B2944 /* googleDefault.png */,
 				D8EEB8401F783482008C49F6 /* Mappers */,
-				D86D9E941F7ACB8F008B2944 /* Internet.swift */,
 				D8EEB84A1F783509008C49F6 /* JSONParser.swift */,
 				D8EEB84D1F783509008C49F6 /* Typealias.swift */,
 			);
@@ -323,11 +331,11 @@
 		D8EEB8151F782A2E008C49F6 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				D8368AD41F7ED2BE00516791 /* eventsMadrid.jpg */,
-				D8368AD51F7ED2BE00516791 /* shopsMadrid.jpg */,
-				D8368ADC1F7ED54000516791 /* madrid.jpg */,
-				D8368AD81F7ED45E00516791 /* event.png */,
-				D8368AD91F7ED45E00516791 /* shop.png */,
+				D8368AD41F7ED2BE00516791 /* eventsMadrid2.jpg */,
+				D8368AD51F7ED2BE00516791 /* shopsMadrid2.jpg */,
+				D8368ADC1F7ED54000516791 /* madrid2.jpg */,
+				D8368AD81F7ED45E00516791 /* event2.png */,
+				D8368AD91F7ED45E00516791 /* shop2.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 				TargetAttributes = {
 					D8EEB7D81F78294F008C49F6 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = AH9SPD7BPD;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -511,20 +520,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8EEB8231F782A9D008C49F6 /* MenuTableViewCell.xib in Resources */,
-				D8368ADD1F7ED54000516791 /* madrid.jpg in Resources */,
+				D8368ADD1F7ED54000516791 /* madrid2.jpg in Resources */,
 				D8EEB7EA1F78294F008C49F6 /* LaunchScreen.storyboard in Resources */,
 				D8EEB80C1F782A06008C49F6 /* Localizable.strings in Resources */,
 				D8C51FB51F7846E900B89B7D /* ShopCell.xib in Resources */,
 				D8EEB82C1F782C4C008C49F6 /* ShopsViewController.xib in Resources */,
-				D8368AD61F7ED2BE00516791 /* eventsMadrid.jpg in Resources */,
-				D8368ADA1F7ED45E00516791 /* event.png in Resources */,
+				D8368AD61F7ED2BE00516791 /* eventsMadrid2.jpg in Resources */,
+				D8368ADA1F7ED45E00516791 /* event2.png in Resources */,
 				D8EEB7E71F78294F008C49F6 /* Assets.xcassets in Resources */,
 				D84C91F31F7D57A300B37C93 /* EventDetailViewController.xib in Resources */,
 				D86D9E971F7AD20D008B2944 /* googleDefault.png in Resources */,
 				D8EEB8301F782C64008C49F6 /* EventsViewController.xib in Resources */,
-				D8368ADB1F7ED45E00516791 /* shop.png in Resources */,
+				D8368ADB1F7ED45E00516791 /* shop2.png in Resources */,
 				D8C394851F7991450062986B /* ShopDetailViewController.xib in Resources */,
-				D8368AD71F7ED2BE00516791 /* shopsMadrid.jpg in Resources */,
+				D8368AD71F7ED2BE00516791 /* shopsMadrid2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,10 +587,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-madridEventsShops/Pods-madridEventsShops-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,13 +630,13 @@
 				D8B58C151F783B820003B116 /* ShopsViewController+CollectionViewController.swift in Sources */,
 				D8EEB85A1F78351B008C49F6 /* SaveAllShopsInteractor.swift in Sources */,
 				D8EEB8071F7829FD008C49F6 /* CoreDataStack.swift in Sources */,
-				D86D9E951F7ACB8F008B2944 /* Internet.swift in Sources */,
 				D8C51FB41F7846E900B89B7D /* ShopCell.swift in Sources */,
 				D8EEB7DD1F78294F008C49F6 /* AppDelegate.swift in Sources */,
 				D8EEB82B1F782C4C008C49F6 /* ShopsViewController.swift in Sources */,
 				D8EEB8551F783509008C49F6 /* SetExecutedOnceInteractor.swift in Sources */,
 				D8EEB8531F783509008C49F6 /* ExecuteOnceInteractorImpl.swift in Sources */,
 				D8EEB8031F7829E3008C49F6 /* Shop.swift in Sources */,
+				D83EA2E61F80EFF000676E30 /* Reachability.swift in Sources */,
 				D8C394841F7991450062986B /* ShopDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,7 +782,7 @@
 			baseConfigurationReference = 7CD3DBC8923203DE407651B5 /* Pods-madridEventsShops.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AH9SPD7BPD;
 				INFOPLIST_FILE = madridEventsShops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bustos.madridEventsShops;
@@ -785,7 +796,7 @@
 			baseConfigurationReference = 37E370E772E7B372EAC2F5B7 /* Pods-madridEventsShops.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AH9SPD7BPD;
 				INFOPLIST_FILE = madridEventsShops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bustos.madridEventsShops;
