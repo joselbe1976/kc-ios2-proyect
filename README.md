@@ -15,10 +15,4 @@ Development :
 
 ScreenShots:
 
-<img height="350px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/menu.png"><img height="350px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/tiendas.png">
-
-<img height="350px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/eventos.png">
-
-<img height="350px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/detalle.png">
-
-<img height="350px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/internet.png">
+<img height="250px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/menu.png"><img height="250px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/tiendas.png"><img height="250px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/eventos.png"><img height="250px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/detalle.png"><img height="250px" src = "https://raw.githubusercontent.com/joselbe1976/kc-ios2-proyect/master/madridEventsShops/madridEventsShops/gitimages/internet.png">
